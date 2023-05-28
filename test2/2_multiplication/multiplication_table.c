@@ -1,3 +1,6 @@
+/*
+exercise_2) 구구단을 출력하라.
+*/
 #include <stdio.h>
 
 int main(){

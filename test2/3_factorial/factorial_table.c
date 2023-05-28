@@ -1,3 +1,6 @@
+/*
+exercise_3) 숫자를 입력받고 해당 수의 팩토리얼 값을 산출하라.
+*/
 #include <stdio.h>
 
 int main(){
