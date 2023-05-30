@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <string.h>
 /*
 exercise4)
 회문(문장의 배열이 대칭을 이루는 문자열)을 구별할 수 있는 프로그램을 작성하라.
@@ -18,6 +16,12 @@ exercise4)
 extra_exam) 숫자회문을 추출하라. 
 숫자회문을 추출하기 위해서 내가 원하는 숫자를 입력하고 입력받은 숫자 내 탐색을 실시하여 회문에 해당하는 숫자를 추출하여보자.
 */
+
+
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+
 
 void main(){
 
