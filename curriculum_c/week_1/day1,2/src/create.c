@@ -6,39 +6,38 @@ extern student s[30];
 
 void create(){
     
-    int i ,j, brk=0;
+    int create_count=0 ,j, brk=0;
 
     
-    for (i=0; brk != 1; i++){
-        if(s[i].name[0] == '\0'){
+    
+        if(s[create_count].name[0] == '\0'){
             printf("학생의 이름을 입력하세요: ");
-            scanf("%s",s[i].name);
+            scanf("%s",s[create_count].name);
 
             printf("학생의 이메일 주소를 입력하세요:");
-            scanf("%s",s[i].email);
+            scanf("%s",s[create_count].email);
 
             printf("학생의 전화번호를 입력하세요:");
-            scanf("%s",s[i].number);
+            scanf("%s",s[create_count].number);
 
             for (j=0; j<29 ; j++){
                 s[0].id = 1;
-                if(s[i-1].id == j || s[i].id == 0){
-                    s[i].id = j+1;
+                if(s[create_count-1].id == j || s[create_count].id == 0){
+                    s[create_count].id = j+1;
                     break;
                 }
-            
-            
+            create_count += 1;
+        
             }
 
         }
         else{
-            i += 1;
+            create_count += 1;
     
         }
-        printf("종료하시겠습니까? 1.YES 2.NO\n ");
-        scanf("%d",&brk);
         
         
         
-    }
+        
+    
 }
