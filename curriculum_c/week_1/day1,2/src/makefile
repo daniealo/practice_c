@@ -1,6 +1,6 @@
 CC = gcc
 TARGER = management
-OBJT = main.o create.o read.o update.o delete.o struct.o
+OBJT = main.o  create.o read.o update.o delete.o
 
 
 all : $(TARGER)
@@ -19,10 +19,7 @@ update.o : update.c crud.h struct.h
 
 delete.o : delete.c crud.h struct.h
 	$(CC) -c delete.c
-
-struct.o : struct.c struct.h
-	$(CC) -c struct.c
-
+	
 .PHONY: clean
 clean : 
 	rm -f *.o $(TARGER)

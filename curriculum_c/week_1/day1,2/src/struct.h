@@ -1,22 +1,22 @@
 #ifndef struct_H
 #define struct_H
+#include <stddef.h>
 
 
-typedef struct {
+typedef struct student{
     char name[30];
     int id ;
     char number[12];
     char email[100];
     struct student *prev;
     struct student *next;
+   
 } student;
 
-typedef struct {
-    student *head;
-    student *tail;
-}  linkedlist;
+struct student *head ;
+struct student *tail ;
 
 
-extern student s[30];
+
 
 #endif

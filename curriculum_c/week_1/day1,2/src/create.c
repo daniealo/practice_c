@@ -1,43 +1,62 @@
-#include <stdio.h>
-#include "crud.h"
-#include <stddef.h>
 
-extern student s[30];
+#include <stdio.h>
+#include <stdlib.h>
+#include "struct.c"
+#include "crud.h"
+
 
 void create(){
     
-    int create_count=0 ,j, brk=0;
 
+    struct student *cre_info = (struct student*)malloc(sizeof(struct student*));
+    struct student *check = head ;
     
+
+    printf("생성하실 학생번호를 입력하세요: ");
+    scanf("%d",&cre_info -> id);
     
-        if(s[create_count].name[0] == '\0'){
-            printf("학생의 이름을 입력하세요: ");
-            scanf("%s",s[create_count].name);
 
-            printf("학생의 이메일 주소를 입력하세요:");
-            scanf("%s",s[create_count].email);
-
-            printf("학생의 전화번호를 입력하세요:");
-            scanf("%s",s[create_count].number);
-
-            for (j=0; j<29 ; j++){
-                s[0].id = 1;
-                if(s[create_count-1].id == j || s[create_count].id == 0){
-                    s[create_count].id = j+1;
-                    break;
-                }
-            create_count += 1;
+    while (check != NULL){
         
-            }
-
+        // 학생정보 생성전 중복된 학생정보인지 체크
+        if(check -> id == cre_info -> id){
+            printf("이미 있는 학생번호 입니다.");
+            free(cre_info);
+            return ;
         }
-        else{
-            create_count += 1;
+        check = check -> next;
+
+    }
     
+    printf("등록하실 학생의 이름을 입력하세요: ");
+    scanf("%s",cre_info -> name);
+        
+
+    printf("등록하실 학생의 이메일을 입력하세요: ");
+    scanf("%s",cre_info -> email);
+
+
+    printf("등록하실 학생의 전화번호를 입력하세요: ");
+    scanf("%s",cre_info -> number);
+
+
+    // 아래는 실질적으로 연결리스트가 가르키는 포인터(NULL로 초기화)
+    cre_info -> prev = NULL;
+    cre_info -> next = NULL;
+
+    if (head == NULL){
+        head = cre_info;
+        tail = cre_info;
+    }else {
+        tail -> next = cre_info;
+        cre_info -> prev = tail;
+        tail = cre_info;
         }
-        
-        
-        
-        
-    
+
 }
+
+        
+        
+        
+        
+    
