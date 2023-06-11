@@ -1,62 +1,54 @@
-
-#include <stdio.h>
-#include <stdlib.h>
-#include "struct.c"
 #include "crud.h"
-
+#include "mysql_function.h"
 
 void create(){
-    
+    MYSQL *conn;
+    MYSQL_RES *res;
+    MYSQL_ROW row;
+    conn = mysql_init(NULL);
+    res = mysql_use_result(conn);
 
-    struct student *cre_info = (struct student*)malloc(sizeof(struct student*));
-    struct student *check = head ;
-    
+    char query[100];
+    char *name,*email,*number;
+    int create_id;
 
     printf("생성하실 학생번호를 입력하세요: ");
-    scanf("%d",&cre_info -> id);
+    scanf("%d",&create_id);
+
+    char tableName[] = "student";
+    char columnName[] = "id";
+
+    int check = checkDuplicateData(conn,tableName,columnName,&create_id);
     
 
-    while (check != NULL){
-        
-        // 학생정보 생성전 중복된 학생정보인지 체크
-        if(check -> id == cre_info -> id){
-            printf("이미 있는 학생번호 입니다.");
-            free(cre_info);
-            return ;
-        }
-        check = check -> next;
+    if (check == 1) {
+        printf("입력한 데이터는 중복됩니다.\n");
+        return ;
 
+    } else if (check == 0) {
+        printf("등록하실 학생의 이름을 입력하세요: ");
+        scanf("%s",name);
+            
+        printf("등록하실 학생의 이메일을 입력하세요: ");
+        scanf("%s",email);
+
+        printf("등록하실 학생의 전화번호를 입력하세요: ");
+        scanf("%s",number);
+
+        sprintf(query, "INSERT INTO student (id, name, email, number) VALUES (%d, '%s', '%s', '%s')",create_id, name, email, number);
+        
+        if (mysql_query(conn, query)){
+            fprintf(stderr, "%s\n", mysql_error(conn));
+            exit(1);
+        }
+    } else {
+        printf("중복 체크 오류\n");
     }
     
-    printf("등록하실 학생의 이름을 입력하세요: ");
-    scanf("%s",cre_info -> name);
-        
-
-    printf("등록하실 학생의 이메일을 입력하세요: ");
-    scanf("%s",cre_info -> email);
-
-
-    printf("등록하실 학생의 전화번호를 입력하세요: ");
-    scanf("%s",cre_info -> number);
-
-
-    // 아래는 실질적으로 연결리스트가 가르키는 포인터(NULL로 초기화)
-    cre_info -> prev = NULL;
-    cre_info -> next = NULL;
-
-    if (head == NULL){
-        head = cre_info;
-        tail = cre_info;
-    }else {
-        tail -> next = cre_info;
-        cre_info -> prev = tail;
-        tail = cre_info;
-        }
 
 }
 
         
         
-        
-        
+
     

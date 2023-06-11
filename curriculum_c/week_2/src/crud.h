@@ -5,13 +5,12 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
-#include "struct.h"
 
 
 void read();
 void create();
-void update();
-void delete();
+//void update();
+//void delete();
 
 #endif
 

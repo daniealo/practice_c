@@ -1,11 +1,11 @@
-
 #include "crud.h"
-
+#include "mysql_function.h"
 
 int main(){
-    struct student *head = NULL;
-    struct student *tail = NULL;
-
+    MYSQL *conn ;
+    MYSQL_RES *res;
+    MYSQL_ROW row ;
+   void connect();
 
     int choice;
     while(1){
@@ -21,10 +21,10 @@ int main(){
                 read();
                 break;
             case 3:
-                update();
+                //update();
                 break;
             case 4:
-                delete();
+                //delete();
                 break;
             case 5: 
                 return 0;
@@ -34,4 +34,7 @@ int main(){
                 break;
         }
     }
+
+    mysql_free_result(res);
+    mysql_close(conn);   
 }

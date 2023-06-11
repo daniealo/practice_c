@@ -1,12 +1,10 @@
-
-#include <stdio.h>
-#include <stdlib.h>
-#include "struct.c"
-#include "crud.h"
+//#include "mysql_function.h"
+//#include "crud.h"
 
 
 
 void delete(){
+    /*
     int search;
     printf("삭제하실 학생번호를 입력하세요: ");
     scanf("%d",&search);
@@ -37,5 +35,5 @@ void delete(){
         check = check -> next;
     }
     printf("해당학번의 학생을 찾을 수 없습니다.\n");
-
+*/
 }

@@ -1,5 +1,10 @@
 #include "/users/daniealo/first/mysql_connect/header/mysql.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include "struct.c"
+#include "crud.h"
+
+
 
 void input_data() {
         MYSQL *conn;
@@ -9,10 +14,13 @@ void input_data() {
         char *server = "localhost";
         char *user = "root";
         char *password = "1234";
-        char *database = "list";
+        char *database = "management";
 
         conn = mysql_init(NULL);
         res = mysql_use_result(conn);
+
+        struct student *cre_info = (struct student*)malloc(sizeof(struct student*));
+        struct student *check = head ;
 
         /* connect to database */
         if (!mysql_real_connect(conn, server, user, password, database, 0 ,NULL, 0)){
@@ -20,7 +28,7 @@ void input_data() {
                 exit(1);
         }
 // input data 
-        if (mysql_query(conn, "insert into datalist (name,address,email,p_num) values('홍다섯','서울시 강남구','ghdektjt05@naver.com','01005500005')")){
+        if (mysql_query(conn, "insert into student (id,name,email,number) values('%d','%s','%s','%s')",cre_info -> id, cre_info -> name, cre_info -> email, cre_info -> number)){
                 fprintf(stderr, "%s\n", mysql_error(conn));
                 exit(1);
 

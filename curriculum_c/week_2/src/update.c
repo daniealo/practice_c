@@ -1,19 +1,15 @@
-
-
-#include <stdio.h>
-#include "struct.c"
-#include "crud.h"
-
+//#include "crud.h"
+//#include "mysql_function.h"
 
 void update(){
-    int search;
+   /* int search;
     printf("정보를 수정할 학생번호를 입력하세요: ");
     scanf("%d",&search);
 
     
 
-    struct student *check = head;
-    while(check != NULL){
+    ;
+    while( != NULL){
         if(check -> id == search){
             printf("ID       : %d\n", check -> id);
             printf("이름     : %s\n", check -> name);
@@ -65,5 +61,5 @@ void update(){
             }
         }
         check = check -> next;
-    }
+    }*/
 }
